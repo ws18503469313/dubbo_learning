@@ -18,7 +18,7 @@ import java.util.List;
  * @return:
  */
 
-@Service
+@Service(timeout = 3000)
 @Component
 public class UserAddressServiceImpl implements UserAddressService {
 

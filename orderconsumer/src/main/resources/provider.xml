@@ -18,8 +18,14 @@
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
     <!-- generate proxy for the remote service, then demoService can be used in the same way as the
     local regular interface -->
-    <dubbo:reference id="userService" check="false" interface="com.cloud.service.UserAddressService"/>
+    <!-- 重试只能设置在幂等 的方法上 -->
+    <dubbo:reference id="userService" check="false" timeout="4000" interface="com.cloud.service.UserAddressService" stub="com.itmuch.service.impl.UserAddressServiceStub">
+            <dubbo:method name="getUserAddressList" timeout="3000" retries="3" />
+    </dubbo:reference>
     <!-- 监控 -->
     <dubbo:monitor protocol="registry" />
 <!--    <dubbo:monitor address="127.0.0.1:7070" />-->
+
+
+
 </beans>

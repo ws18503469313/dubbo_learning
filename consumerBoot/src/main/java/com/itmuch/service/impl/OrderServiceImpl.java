@@ -15,7 +15,8 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
 //    @Autowired
-    @Reference//dubbo 的形式
+    @Reference//(url = "127.0.0.1:81")采用向dubbo直连的方式
+                // 即便zookeeper 宕掉,微服务也会通过本地服务缓存发起调用//dubbo 的形式
     UserAddressService userAddressService;
     @Override
     public List<UserAddress> initOrder(String s) {

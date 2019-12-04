@@ -18,4 +18,6 @@
     <dubbo:service interface="com.cloud.service.UserAddressService" ref="userAddressService"/>
 
     <dubbo:monitor protocol="registry" />
+    <!-- 配置统一超市规则 -->
+    <dubbo:consumer timeout="5000"  />
 </beans>
